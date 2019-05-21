@@ -3,6 +3,8 @@
 
 Creates and manupulates a square object
 """
+
+
 class Square:
     """ Geometric Square
 
