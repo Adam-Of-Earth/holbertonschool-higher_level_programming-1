@@ -24,6 +24,7 @@ class Square:
             ValueError: size argument is negative
         """
         self.__size = size
+
     @property
     def size(self):
         """int: length of the squares sides
@@ -40,6 +41,7 @@ class Square:
             raise(ValueError("size must be >= 0"))
         else:
             self.__size = value
+
     def area(self):
         """Finds the area of the square from the size given
 
