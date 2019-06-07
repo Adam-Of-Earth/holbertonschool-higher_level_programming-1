@@ -15,6 +15,7 @@ def class_to_json(obj):
     dic = {}
     for key, value in lst.items():
         if isinstance(value, list) or isinstance(value, dict) or isinstance(
-            value, str) or isinstance(value, int) or isinstance(value, bool):
+            value, str) or isinstance(
+                value, int) or isinstance(value, bool):
             dic.update({key: value})
     return dic
