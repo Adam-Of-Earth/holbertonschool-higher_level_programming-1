@@ -34,8 +34,10 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Method to raeturn a new instance of a class from an attribute dictionary"""
+        """Method to raeturn a new instance of a
+        class from an attribute dictionary
 
+        """
         if cls.__name__ == "Rectangle":
             obj = cls(1, 1)
         elif cls.__name__ == "Square":
