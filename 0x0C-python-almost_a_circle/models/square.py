@@ -19,7 +19,7 @@ class Square(Rectangle):
         """
         self.size = size
         super().__init__(size, size, x, y, id)
-    
+
     @property
     def size(self):
         """Getter method for size"""
@@ -39,7 +39,8 @@ class Square(Rectangle):
     def __str__(self):
         """Method to return string representation of Square"""
 
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.__size)
+        return "[Square] ({}) {}/{} - {}".format(
+            self.id, self.x, self.y, self.__size)
 
     def update(self, *args, **kwargs):
         """Method to assign arguments to attributes
