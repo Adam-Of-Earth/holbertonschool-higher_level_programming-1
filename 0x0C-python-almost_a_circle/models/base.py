@@ -4,6 +4,7 @@
 
 import json
 import os.path
+import turtle
 
 
 class Base:
@@ -31,6 +32,25 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw shapes using turtle module"""
+
+        turtle.setheading(0)
+        turtle.penup()
+        for obj in list_rectangles + list_squares:
+            turtle.setposition(obj.x, obj.y)
+            turtle.begin_fill()
+            turtle.forward(obj.width)
+            turtle.left(90)
+            turtle.forward(obj.height)
+            turtle.left(90)
+            turtle.forward(obj.width)
+            turtle.left(90)
+            turtle.forward(obj.height)
+            turtle.left(90)
+            turtle.end_fill()
 
     @classmethod
     def create(cls, **dictionary):
