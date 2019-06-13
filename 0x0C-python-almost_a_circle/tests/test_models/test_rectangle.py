@@ -69,3 +69,73 @@ class RectangleTests(unittest.TestCase):
             "were given"
         with self.assertRaises(TypeError, msg=msg):
             Rectangle(1, 2, 3, 4, 5, 6)
+
+    def test_toStr(self):
+        """Testing converting rectangle to a string"""
+
+        r = Rectangle(1, 2, 3, 4)
+        res = "[Rectangle] (1) 3/4 - 1/2"
+        with self.subTest():
+            self.assretEqual(str(r), res)
+        r.x = 20
+        r.y = 20
+        res = "[Rectangle] (1) 20/20 - 1/2"
+        with self.subTest():
+            self.assertEqual(str(r), res)
+        r = Rectangle(5, 6, 7, 8, 9)
+        res = "[Rectangle] (9) 7/8 - 5/6"
+        with self.subTest():
+            self.assertEqual(str(r), res)
+        r.width = 9
+        r.height = 12
+        res = "[Rectangle] (9) 7/8 - 9/12"
+        with self.subTest():
+            self.assertEqual(str(r), res)
+
+    def test_Update(self):
+        """Testing update method"""
+
+        r = Rectangle(1, 2, 3, 4)
+        args = (
+            ("id", "id"), ("width", 1), ("height", 2), ("x", 3), ("y", 4),
+            ("ex", 0)
+        )
+        d = r.to_dictionary()
+        for i range(len(arguments)):
+            ar = args[:i + 1]
+            if i < len(args) - 1:
+                d.update(ar)
+            with self.subTest():
+                r.update(*(val for _, val in ar))
+                self.assertEqual(r.to_dictionary(), d)
+        r.update("99", width=10)
+        d["id"] = "99"
+        with self.subTest():
+            self.assertEqual(r.to_dictionary(), d)
+        r.update("99", 1, 2, 3, 4)
+        d = r.to_dictionary()
+        for i in range(len(args)):
+            ar = args[:i + 1]
+            if i < len(args) - 1:
+                d.update(ar)
+            with self.subTest():
+                r.update(**dict(ar))
+                self.assertEqual(r.to_dictionary(), d)
+
+    def test_toDict(self):
+        """Tests converting rectangles to a dictionary"""
+
+        r = Rectangle(1, 2, 3, 4)
+        d = {'id': 1, 'width': 1, 'height': 2, 'x': 3, 'y': 4}
+        with self.subTest():
+            self.assertEqual(r.to_dictionary(), d)
+        r.id = 'id'
+        r.width = 30
+        r.height = 20
+        r.x = 50
+        d['id'] = 'id'
+        d['width'] = 30
+        d['height'] = 20
+        d['x'] = 50
+        with self.subTest():
+            self.assertEqual(r.to_dictionary(), d)
