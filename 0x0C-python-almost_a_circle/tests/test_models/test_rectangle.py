@@ -98,29 +98,29 @@ class RectangleTests(unittest.TestCase):
         r = Rectangle(1, 2, 3, 4)
         args = (
             ("id", "id"), ("width", 1), ("height", 2), ("x", 3), ("y", 4),
-            ("ex", 0)
+            ("extra", 0)
         )
-        d = r.to_dictionary()
+        dic = r.to_dictionary()
         for i range(len(args)):
             ar = args[:i + 1]
             if i < len(args) - 1:
-                d.update(ar)
+                dic.update(ar)
             with self.subTest():
                 r.update(*(val for _, val in ar))
-                self.assertEqual(r.to_dictionary(), d)
+                self.assertEqual(r.to_dictionary(), dic)
         r.update("99", width=10)
-        d["id"] = "99"
+        dic["id"] = "99"
         with self.subTest():
-            self.assertEqual(r.to_dictionary(), d)
+            self.assertEqual(r.to_dictionary(), dic)
         r.update("99", 1, 2, 3, 4)
-        d = r.to_dictionary()
+        dic = r.to_dictionary()
         for i in range(len(args)):
             ar = args[:i + 1]
             if i < len(args) - 1:
-                d.update(ar)
+                dic.update(ar)
             with self.subTest():
                 r.update(**dict(ar))
-                self.assertEqual(r.to_dictionary(), d)
+                self.assertEqual(r.to_dictionary(), dic)
 
     def test_toDict(self):
         """Tests converting rectangles to a dictionary"""
