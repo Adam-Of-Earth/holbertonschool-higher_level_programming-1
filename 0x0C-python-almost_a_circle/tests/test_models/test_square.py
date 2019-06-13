@@ -21,24 +21,24 @@ class SquareTests (unittest.TestCase):
         importlib.reload(models.rectangle)
         importlib.reload(models.square)
 
-    def test_Validation(self):
+    def test_Validator(self):
         """Tests validator method"""
 
         s = Square(1, 2, 1)
-        msg = 'width must be an integer'
+        msg = "width must be an integer"
         with self.subTest():
             with self.assertRaises(TypeError, msg=msg):
-                Square('3')
+                Square("5")
         with self.subTest():
             with self.assertRaises(TypeError, msg=msg):
-                s.size = '3'
+                s.size = "5"
         with self.subTest():
             with self.assertRaises(TypeError, msg=msg):
                 Square([3])
         with self.subTest():
             with self.assertRaises(TypeError, msg=msg):
                 s.size = [3]
-        msg = 'width must be > 0'
+        msg = "width must be > 0"
         with self.subTest():
             with self.assertRaises(ValueError, msg=msg):
                 Square(0)
@@ -64,7 +64,7 @@ class SquareTests (unittest.TestCase):
 
         msg = "__init__() got an unexpected keyword argument 'ids'"
         with self.assertRaises(TypeError, msg=msg):
-            Square(5, ids=20)
+            Square(5, id=20)
         msg = "__init__() takes from 2 to 5 positional arguments but " \
                   "6 were given"
         with self.assertRaises(TypeError, msg=msg):
@@ -78,38 +78,38 @@ class SquareTests (unittest.TestCase):
             self.assertEqual(s.width, 3)
         with self.subTest():
             self.assertEqual(s.height, 3)
-        s.size = 100
+        s.size = 30
         with self.subTest():
-            self.assertEqual(s.width, 100)
+            self.assertEqual(s.width, 30)
         with self.subTest():
-            self.assertEqual(s.height, 100)
+            self.assertEqual(s.height, 30)
 
     def test_ToStr(self):
         """Converting squares to a string"""
 
         s = Square(1, 2, 3)
-        result = '[Square] (1) 2/3 - 1'
+        msg = "[Square] (1) 2/3 - 1"
         with self.subTest():
-            self.assertEqual(str(s), result)
+            self.assertEqual(str(s), msg)
         s.x = 10
         s.y = 20
-        result = '[Square] (1) 10/20 - 1'
+        msg = "[Square] (1) 10/20 - 1"
         with self.subTest():
-            self.assertEqual(str(s), result)
+            self.assertEqual(str(s), msg)
         s = Square(5, 6, 7, 8)
-        result = '[Square] (8) 6/7 - 5'
+        msg = "[Square] (8) 6/7 - 5"
         with self.subTest():
-            self.assertEqual(str(s), result)
+            self.assertEqual(str(s), msg)
         s.size = 30
-        result = '[Square] (8) 6/7 - 30'
+        msg = "[Square] (8) 6/7 - 30"
         with self.subTest():
-            self.assertEqual(str(s), result)
+            self.assertEqual(str(s), msg)
 
     def test_ToDict(self):
         """Converting the object to a dictionary"""
 
-        s = Square(3, 10, 4, 'square')
-        d = {'id': 'square', 'size': 3, 'x': 10, 'y': 4}
+        s = Square(3, 10, 4, "square")
+        d = {"id": "square", "size": 3, "x": 10, "y": 4}
         self.assertEqual(s.to_dictionary(), d)
 
     def test_Update(self):
@@ -117,7 +117,7 @@ class SquareTests (unittest.TestCase):
 
         s = Square(1, 2, 3)
         arguments = (
-            ('id', 'id'), ('size', 20), ('x', 30), ('y', 40), ('extra', 0)
+            ("id", "id"), ("size", 20), ("x", 30), ("y", 40), ("extra", 0)
         )
         d = s.to_dictionary()
         for i in range(len(arguments)):
@@ -127,11 +127,11 @@ class SquareTests (unittest.TestCase):
             with self.subTest():
                 s.update(*(val for _, val in args))
                 self.assertEqual(s.to_dictionary(), d)
-        s.update('new', width=5)
-        d['id'] = 'new'
+        s.update("new", width=5)
+        d["id"] = "new"
         with self.subTest():
             self.assertEqual(s.to_dictionary(), d)
-        s.update('new', 1, 2, 3, 4)
+        s.update("new", 1, 2, 3, 4)
         d = s.to_dictionary()
         for i in range(len(arguments)):
             args = arguments[:i + 1]
