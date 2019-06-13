@@ -76,7 +76,7 @@ class RectangleTests(unittest.TestCase):
         r = Rectangle(1, 2, 3, 4)
         res = "[Rectangle] (1) 3/4 - 1/2"
         with self.subTest():
-            self.assretEqual(str(r), res)
+            self.assertEqual(str(r), res)
         r.x = 20
         r.y = 20
         res = "[Rectangle] (1) 20/20 - 1/2"
