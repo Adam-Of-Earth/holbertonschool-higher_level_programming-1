@@ -101,7 +101,7 @@ class RectangleTests(unittest.TestCase):
             ("extra", 0)
         )
         dic = r.to_dictionary()
-        for i range(len(args)):
+        for i in range(len(args)):
             ar = args[:i + 1]
             if i < len(args) - 1:
                 dic.update(ar)
