@@ -1,10 +1,10 @@
 -- Create a database for U.S. cities
 -- Create database
-CREATE DATABASE IF NOT EXISTS 'hbtn_0d_usa';
+CREATE DATABASE IF NOT EXISTS hbtn_0d_usa;
 -- Switch to database
-USE 'hbtn_0d_usa';
+USE hbtn_0d_usa;
 -- Create table
-CREATE TABLE IF NOT EXISTS 'cities' (
+CREATE TABLE IF NOT EXISTS cities (
     id INT PRIMARY KEY AUTO_INCREMENT,
     state_id INT NOT NULL,
     name VARCHAR(256) NOT NULL,
