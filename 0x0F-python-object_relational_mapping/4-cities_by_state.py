@@ -12,7 +12,7 @@ if __name__ == "__main__":
     dbase = MySQLdb.connect(host="localhost",
                             port=3306,
                             user=user,
-                            pwd=pwd,
+                            passwd=pwd,
                             db=dbname)
 
     cursor = dbase.cursor()
