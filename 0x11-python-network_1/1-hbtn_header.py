@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """Module to return the request id of the header"""
 import sys
-import urllib.request as request
+import urllib.request
 
 
-url = sys.argv[1]
-with request.urlopen(url) as response:
+with urllib.request.urlopen(sys.argv[1]) as response:
     print(response.headers.get("X-Request-Id"))
